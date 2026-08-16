@@ -190,10 +190,36 @@
     .mesh-bg { animation:none; }
   }
 
-  @media (max-width: 640px) {
+    @media (max-width: 640px) {
     body { font-size:15px; }
     h1 { font-size:clamp(2rem, 9vw, 2.8rem) !important; line-height:1.1 !important; }
     h2 { font-size:clamp(1.6rem, 7vw, 2.3rem) !important; }
+  }
+
+  /* Details/Summary для доп. услуг */
+  details.addon-details summary {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  details.addon-details summary::-webkit-details-marker {
+    display: none;
+  }
+  details.addon-details summary::marker {
+    display: none;
+  }
+  details.addon-details[open] .addon-chevron {
+    transform: rotate(180deg);
+  }
+  .addon-chevron {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .addon-content {
+    animation: addonFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes addonFadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 </head>
@@ -838,113 +864,445 @@
       </div>
     </div>
 
-<!-- Дополнительные услуги -->
+<!-- ============ ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ ============ -->
 <div class="mt-20 lg:mt-24 max-w-6xl mx-auto reveal">
-  <div class="text-center mb-10">
+  <div class="text-center mb-12">
     <div class="sec-num text-[11px] uppercase tracking-[0.2em] text-lime mb-3 inline-flex items-center gap-3">
-      <span class="w-8 h-px bg-lime"></span> Буст <span class="w-8 h-px bg-lime"></span>
+      <span class="w-8 h-px bg-lime"></span> Дополнительные услуги <span class="w-8 h-px bg-lime"></span>
     </div>
-    <h3 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight">Дополнительные услуги</h3>
-    <p class="text-cream/60 mt-3">Масштабируйте результат, когда базовая работа уже идёт</p>
+    <h3 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight">Что можно заказать к ведению или отдельно</h3>
+    <p class="text-cream/60 mt-3 max-w-2xl mx-auto">Все услуги прозрачны: что входит, кто делает, что вы получаете на выходе. Никаких скрытых платежей.</p>
   </div>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    
-    <!-- +1 пост -->
-    <div class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-2xl p-6 transition-all">
-      <div class="flex items-start justify-between mb-4">
-        <div class="w-11 h-11 rounded-xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        </div>
-        <div class="font-num font-bold text-xl text-lime">2 000 ₽</div>
-      </div>
-      <h4 class="font-display font-semibold text-lg mb-1.5">+1 пост</h4>
-      <p class="text-sm text-cream/60 leading-relaxed">Дополнительный пост с текстом, дизайном и публикацией сверх пакета.</p>
-    </div>
+  <div class="grid md:grid-cols-2 gap-6">
 
-    <!-- +1 stories -->
-    <div class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-2xl p-6 transition-all">
+    <!-- 1. Пакет 3 постов -->
+    <article class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-3xl p-6 lg:p-7 transition-all">
       <div class="flex items-start justify-between mb-4">
-        <div class="w-11 h-11 rounded-xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10M7 4l1 16a1 1 0 001 1h6a1 1 0 001-1l1-16"/></svg>
+        <div class="w-12 h-12 rounded-2xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
         </div>
-        <div class="font-num font-bold text-xl text-lime">700 ₽</div>
+        <div class="font-num font-bold text-2xl text-lime">8 000 ₽</div>
       </div>
-      <h4 class="font-display font-semibold text-lg mb-1.5">+1 stories</h4>
-      <p class="text-sm text-cream/60 leading-relaxed">Дополнительная stories с оформлением, текстом и анимацией.</p>
-    </div>
+      <h4 class="font-display font-semibold text-xl mb-2">Пакет 3 постов</h4>
+      <p class="text-cream/70 text-sm leading-relaxed mb-4">Три готовых поста для вашего аккаунта — с текстами, дизайном и публикацией. Заказываете, когда нужно усилить конкретную неделю: акция, анонс, запуск продукта.</p>
+      
+      <ul class="space-y-2 mb-5">
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Продающие тексты под вашу аудиторию</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Дизайн визуала для каждого поста</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Публикация в согласованное время</li>
+      </ul>
 
-    <!-- Reels под ключ -->
-    <div class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-2xl p-6 transition-all">
+      <details class="addon-details group">
+        <summary class="flex items-center justify-between text-lime font-medium text-sm py-2 border-t border-white/10">
+          <span>Подробнее об услуге</span>
+          <svg class="addon-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="addon-content mt-4 space-y-3 text-[13px] text-cream/70 leading-relaxed">
+          <div>
+            <div class="font-semibold text-cream mb-1">Откуда берётся контент:</div>
+            <p>Вы снимаете фото по моему ТЗ на телефон (5–10 минут вашего времени) и присылаете мне. Если есть подходящие фото в вашем архиве — можем использовать их.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Кто делает:</div>
+            <p>Я делаю всё сам: пишу тексты, создаю дизайн, публикую.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что получаете на выходе:</div>
+            <p>Три готовых поста в вашем аккаунте, опубликованных по графику.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Сроки:</div>
+            <p>2–3 дня от момента получения материалов.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что НЕ входит:</div>
+            <p>Профессиональная фотосъёмка (заказывается отдельно), монтаж видео (для видео — услуга Reels).</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Доступность:</div>
+            <p>Можно заказать отдельно или дополнительно к ведению.</p>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 2. Пакет 10 stories -->
+    <article class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-3xl p-6 lg:p-7 transition-all">
       <div class="flex items-start justify-between mb-4">
-        <div class="w-11 h-11 rounded-xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        <div class="w-12 h-12 rounded-2xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10M7 4l1 16a1 1 0 001 1h6a1 1 0 001-1l1-16"/></svg>
         </div>
-        <div class="font-num font-bold text-xl text-lime">7 000 ₽</div>
+        <div class="font-num font-bold text-2xl text-lime">12 000 ₽</div>
       </div>
-      <h4 class="font-display font-semibold text-lg mb-1.5">Reels под ключ</h4>
-      <p class="text-sm text-cream/60 leading-relaxed">Сценарий + съёмка + монтаж. До 30 секунд, готовый к публикации ролик.</p>
-    </div>
+      <h4 class="font-display font-semibold text-xl mb-2">Пакет 10 stories</h4>
+      <p class="text-cream/70 text-sm leading-relaxed mb-4">Серия из 10 stories с единой сюжетной линией. Работает как мини-сериал в вашем аккаунте — аудитория залипает, досматривает до конца, активнее взаимодействует.</p>
+      
+      <ul class="space-y-2 mb-5">
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Единая концепция серии и сценарии</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Оформление, анимация, интерактив</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Публикация по графику (1–2 stories в день)</li>
+      </ul>
 
-    <!-- Пакет 3 Reels -->
-    <div class="lift bg-lime/10 border border-lime/40 rounded-2xl p-6 transition-all relative">
-      <div class="absolute -top-2 right-4 bg-lime text-ink text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded">выгодно −15%</div>
+      <details class="addon-details group">
+        <summary class="flex items-center justify-between text-lime font-medium text-sm py-2 border-t border-white/10">
+          <span>Подробнее об услуге</span>
+          <svg class="addon-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="addon-content mt-4 space-y-3 text-[13px] text-cream/70 leading-relaxed">
+          <div>
+            <div class="font-semibold text-cream mb-1">Откуда берётся контент:</div>
+            <p>Вы снимаете материал по моему ТЗ за одну съёмку (30–40 минут вашего времени). Я присылаю список из 15–20 коротких фрагментов и фото, из которых собираю 10 stories. Если у вас есть архив — могу использовать его.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Кто делает:</div>
+            <p>Я делаю всё сам: сценарии, дизайн, анимация, публикация.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что получаете на выходе:</div>
+            <p>10 готовых stories с единой концепцией, опубликованных по графику.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Сроки:</div>
+            <p>5–7 дней от момента получения материалов.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что НЕ входит:</div>
+            <p>Выезд видеографа (заказывается отдельно), съёмка профессиональным оборудованием.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Доступность:</div>
+            <p>Можно заказать отдельно или дополнительно к ведению.</p>
+          </div>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-semibold text-lime mb-1">Почему это работает:</div>
+            <p>Алгоритм Instagram продвигает аккаунты, которые удерживают внимание. Серия из 10 stories с сюжетом удерживает в 3 раза лучше, чем разрозненные сторис.</p>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 3. Reels под ключ -->
+    <article class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-3xl p-6 lg:p-7 transition-all">
       <div class="flex items-start justify-between mb-4">
-        <div class="w-11 h-11 rounded-xl bg-lime/20 border border-lime/50 flex items-center justify-center text-lime">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        <div class="w-12 h-12 rounded-2xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
         </div>
-        <div>
-          <div class="font-num font-bold text-xl text-lime">18 000 ₽</div>
-          <div class="font-num text-xs text-cream/40 line-through">21 000 ₽</div>
-        </div>
+        <div class="font-num font-bold text-2xl text-lime">25 000 ₽</div>
       </div>
-      <h4 class="font-display font-semibold text-lg mb-1.5">Пакет 3 Reels</h4>
-      <p class="text-sm text-cream/60 leading-relaxed">Три ролика под ключ со сценариями, съёмкой и монтажом. Экономия 3 000 ₽.</p>
-    </div>
+      <h4 class="font-display font-semibold text-xl mb-2">Reels под ключ</h4>
+      <p class="text-cream/70 text-sm leading-relaxed mb-4">Полностью готовый Reels с выездом профессионального видеографа — от сценария до публикации. Ничего снимать самому не нужно.</p>
+      
+      <ul class="space-y-2 mb-5">
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Сценарий + выезд видеографа со своим оборудованием</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Съёмка 2–3 часа + монтаж до 30 секунд</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Титры, музыка, цветокоррекция</li>
+      </ul>
 
-    <!-- Пакет 10 stories -->
-    <div class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-2xl p-6 transition-all">
+      <details class="addon-details group">
+        <summary class="flex items-center justify-between text-lime font-medium text-sm py-2 border-t border-white/10">
+          <span>Подробнее об услуге</span>
+          <svg class="addon-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="addon-content mt-4 space-y-3 text-[13px] text-cream/70 leading-relaxed">
+          <div>
+            <div class="font-semibold text-cream mb-1">Откуда берётся контент:</div>
+            <p>Съёмка включена в стоимость. К вам приезжает видеограф с оборудованием (камера, свет, микрофон). От вас нужно: согласовать дату, предоставить локацию (офис/салон/магазин), выделить 2–3 часа времени.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Кто делает:</div>
+            <p>Видеограф делает всё под ключ: съёмка + монтаж + финальный ролик. Я управляю процессом, согласовываю сценарий и проверяю результат.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что получаете на выходе:</div>
+            <p>Готовый Reels до 30 секунд в форматах под Instagram, TikTok, YouTube Shorts, VK.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Сроки:</div>
+            <p>7–10 дней: согласование сценария → съёмка → монтаж → правки → публикация.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что НЕ входит:</div>
+            <p>Аренда студии или локаций (оплачивается отдельно), работа актёров/моделей (оплачивается отдельно), реквизит и костюмы, ролики длиннее 30 секунд.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Доступность:</div>
+            <p>Можно заказать отдельно или дополнительно к ведению.</p>
+          </div>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-semibold text-lime mb-1">Важно:</div>
+            <p>Цена указана за стандартный Reels до 30 секунд. Сложные креативные концепции с актёрами и спецэффектами — от 35 000 ₽.</p>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 4. Пакет 3 Reels -->
+    <article class="lift bg-lime/10 border border-lime/40 rounded-3xl p-6 lg:p-7 transition-all relative">
+      <div class="absolute -top-2 right-4 bg-lime text-ink text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded">экономия 10 000 ₽</div>
       <div class="flex items-start justify-between mb-4">
-        <div class="w-11 h-11 rounded-xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        <div class="w-12 h-12 rounded-2xl bg-lime/20 border border-lime/50 flex items-center justify-center text-lime">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
         </div>
-        <div class="font-num font-bold text-xl text-lime">5 000 ₽</div>
+        <div class="text-right">
+          <div class="font-num font-bold text-2xl text-lime">65 000 ₽</div>
+          <div class="font-num text-xs text-cream/40 line-through">75 000 ₽</div>
+        </div>
       </div>
-      <h4 class="font-display font-semibold text-lg mb-1.5">Пакет 10 stories</h4>
-      <p class="text-sm text-cream/60 leading-relaxed">Серия из 10 stories с единой концепцией и интерактивом (опросы, тесты).</p>
-    </div>
+      <h4 class="font-display font-semibold text-xl mb-2">Пакет 3 Reels</h4>
+      <p class="text-cream/70 text-sm leading-relaxed mb-4">Три полноценных Reels с выездом видеографа. Снимаем всё за один день — экономим ваше время и деньги. Контента хватит на месяц регулярных публикаций.</p>
+      
+      <ul class="space-y-2 mb-5">
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Три сценария: экспертный, развлекательный, продающий</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Одна съёмка 4–5 часов вместо трёх выездов</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Монтаж трёх роликов + публикация по графику</li>
+      </ul>
 
-    <!-- Фотосессия -->
-    <div class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-2xl p-6 transition-all">
+      <details class="addon-details group">
+        <summary class="flex items-center justify-between text-lime font-medium text-sm py-2 border-t border-lime/30">
+          <span>Подробнее об услуге</span>
+          <svg class="addon-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="addon-content mt-4 space-y-3 text-[13px] text-cream/70 leading-relaxed">
+          <div>
+            <div class="font-semibold text-cream mb-1">Откуда берётся контент:</div>
+            <p>Съёмка включена в стоимость. Один выезд видеографа вместо трёх. От вас: согласовать дату, предоставить локацию, выделить 4–5 часов времени.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Кто делает:</div>
+            <p>Видеограф снимает и монтирует все три ролика. Я управляю процессом: согласовываю сценарии, проверяю результат.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что получаете на выходе:</div>
+            <p>Три готовых Reels до 30 секунд каждый, в форматах под все нужные соцсети.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Сроки:</div>
+            <p>10–14 дней: согласование трёх сценариев → съёмка → монтаж трёх роликов → правки → публикация.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что НЕ входит:</div>
+            <p>Аренда студий/локаций (оплачивается отдельно), работа актёров/моделей, съёмка в разные дни (если нужны три разных дня — это три отдельных заказа).</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Доступность:</div>
+            <p>Можно заказать отдельно или дополнительно к ведению.</p>
+          </div>
+          <div class="pt-2 border-t border-lime/30">
+            <div class="font-semibold text-lime mb-1">Защита от «всё не понравилось»:</div>
+            <p>Сначала согласовываем сценарии и снимаем первый ролик. После его утверждения — съёмка оставшихся двух.</p>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 5. Фотосессия 2 часа -->
+    <article class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-3xl p-6 lg:p-7 transition-all">
       <div class="flex items-start justify-between mb-4">
-        <div class="w-11 h-11 rounded-xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H3a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <div class="w-12 h-12 rounded-2xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H3a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         </div>
-        <div class="font-num font-bold text-xl text-lime">12 000 ₽</div>
+        <div class="font-num font-bold text-2xl text-lime">30 000 ₽</div>
       </div>
-      <h4 class="font-display font-semibold text-lg mb-1.5">Фотосессия 2 часа</h4>
-      <p class="text-sm text-cream/60 leading-relaxed">Профессиональный фотограф. Контент на 1–2 месяца вперёд с ретушью.</p>
-    </div>
+      <h4 class="font-display font-semibold text-xl mb-2">Фотосессия 2 часа</h4>
+      <p class="text-cream/70 text-sm leading-relaxed mb-4">Профессиональная фотосъёмка с опытным фотографом. Получаете готовый контент на 1–2 месяца вперёд с детальной ретушью.</p>
+      
+      <ul class="space-y-2 mb-5">
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Выезд фотографа + съёмка 100–150 кадров</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ретушь 70 лучших фото</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Контента хватит на 1–2 месяца публикаций</li>
+      </ul>
 
-    <!-- Вторая соцсеть (широкая карточка) -->
-    <div class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-2xl p-6 transition-all sm:col-span-2 lg:col-span-3">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-        <div class="w-12 h-12 rounded-xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime flex-shrink-0">
+      <details class="addon-details group">
+        <summary class="flex items-center justify-between text-lime font-medium text-sm py-2 border-t border-white/10">
+          <span>Подробнее об услуге</span>
+          <svg class="addon-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="addon-content mt-4 space-y-3 text-[13px] text-cream/70 leading-relaxed">
+          <div>
+            <div class="font-semibold text-cream mb-1">Откуда берётся контент:</div>
+            <p>Съёмка включена в стоимость. К вам приезжает фотограф с оборудованием. От вас: предоставить локацию, выделить 2 часа времени, подготовить то, что нужно снять (товары, интерьер, сотрудников).</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Кто делает:</div>
+            <p>Фотограф снимает и делает первичную обработку. Ретушёр делает детальную ретушь. Я даю ТЗ на съёмку и организую процесс.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что получаете на выходе:</div>
+            <p>70 отретушированных фото в высоком качестве. Файлы в форматах под Instagram, VK, Telegram, сайт.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Сроки:</div>
+            <p>5–7 дней от съёмки до готовых файлов.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что НЕ входит:</div>
+            <p>Аренда студии (оплачивается отдельно, 2 000–5 000 ₽/час), визажист и стилист (оплачиваются отдельно), работа моделей (оплачивается отдельно), реквизит и декорации.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Доступность:</div>
+            <p>Можно заказать отдельно или дополнительно к ведению.</p>
+          </div>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-semibold text-lime mb-1">Два формата на выбор:</div>
+            <p>• Фотосессия на вашей локации (офис/салон/магазин) — 30 000 ₽, студия не нужна<br>
+            • Фотосессия в студии — 30 000 ₽ + аренда студии</p>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 6. Вторая соцсеть -->
+    <article class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-3xl p-6 lg:p-7 transition-all">
+      <div class="flex items-start justify-between mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
         </div>
-        <div class="flex-1">
-          <h4 class="font-display font-semibold text-xl mb-1.5">Дополнительная соцсеть</h4>
-          <p class="text-sm text-cream/60 leading-relaxed">Адаптация контента под вторую площадку: тексты, форматы, обложки, публикация.</p>
+        <div class="font-num font-bold text-2xl text-lime">15 000 ₽<span class="text-sm font-normal text-cream/50">/мес</span></div>
+      </div>
+      <h4 class="font-display font-semibold text-xl mb-2">Вторая соцсеть</h4>
+      <p class="text-cream/70 text-sm leading-relaxed mb-4">Адаптация контента из вашей основной соцсети под вторую площадку. Не нужно платить за двойную работу — берём уже готовый контент и адаптируем.</p>
+      
+      <ul class="space-y-2 mb-5">
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Адаптация форматов под специфику площадки</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Переработка текстов + обложки нужных размеров</li>
+        <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Публикация по графику основного контент-плана</li>
+      </ul>
+
+      <details class="addon-details group">
+        <summary class="flex items-center justify-between text-lime font-medium text-sm py-2 border-t border-white/10">
+          <span>Подробнее об услуге</span>
+          <svg class="addon-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="addon-content mt-4 space-y-3 text-[13px] text-cream/70 leading-relaxed">
+          <div>
+            <div class="font-semibold text-cream mb-1">Откуда берётся контент:</div>
+            <p>Используем уже готовый контент из основной соцсети. Ничего дополнительно снимать не нужно. Я беру ваши посты, stories, видео из основной площадки и адаптирую под вторую.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Кто делает:</div>
+            <p>Я делаю всё сам: адаптация форматов, переработка текстов, создание обложек, публикация.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что получаете на выходе:</div>
+            <p>Полноценное ведение второй соцсети с единым стилем на обеих площадках.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Сроки:</div>
+            <p>Публикации выходят по графику основного контент-плана.</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Что НЕ входит:</div>
+            <p>Создание уникального контента только для второй площадки, ведение более двух площадок (третья площадка — +15 000 ₽/мес за каждую).</p>
+          </div>
+          <div>
+            <div class="font-semibold text-cream mb-1">Доступность:</div>
+            <p>Только для клиентов на ведении (нужен готовый контент-план, чтобы адаптировать).</p>
+          </div>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-semibold text-lime mb-1">Чем отличается от автопостинга:</div>
+            <p>Это не просто дублирование постов. Я адаптирую форматы, тексты и обложки под специфику каждой площадки. Например: для Telegram — короткие тексты и акцент на мессенджер, для VK — другие размеры обложек и форматы.</p>
+          </div>
         </div>
-        <div class="font-num font-bold text-3xl text-lime whitespace-nowrap">+10 000 ₽<span class="text-sm font-normal text-cream/50">/мес</span></div>
+      </details>
+    </article>
+
+    <!-- 7. Визуальный стиль для соцсетей -->
+    <article class="lift bg-white/[0.04] border border-white/10 hover:border-lime/40 rounded-3xl p-6 lg:p-7 transition-all md:col-span-2">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+        <div class="w-14 h-14 rounded-2xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime flex-shrink-0">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <h4 class="font-display font-semibold text-2xl">Визуальный стиль для соцсетей</h4>
+            <div class="font-num font-bold text-2xl text-lime whitespace-nowrap">45 000 ₽</div>
+          </div>
+          <p class="text-cream/70 text-sm leading-relaxed mb-4">Разработка единого визуального стиля для ваших соцсетей. Делается один раз — используется годами. Ваш аккаунт выглядит профессионально и узнаваемо.</p>
+          
+          <div class="grid sm:grid-cols-2 gap-4 mb-5">
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Цветовая палитра + шрифтовая пара</li>
+              <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>5–7 шаблонов постов</li>
+            </ul>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>5 шаблонов stories + обложка Reels</li>
+              <li class="flex items-start gap-2 text-[13px] text-cream/80"><svg class="w-4 h-4 text-lime flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Гайдлайн в PDF</li>
+            </ul>
+          </div>
+
+          <details class="addon-details group">
+            <summary class="flex items-center justify-between text-lime font-medium text-sm py-2 border-t border-white/10">
+              <span>Подробнее об услуге</span>
+              <svg class="addon-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="addon-content mt-4 space-y-3 text-[13px] text-cream/70 leading-relaxed">
+              <div>
+                <div class="font-semibold text-cream mb-1">Откуда берётся материал:</div>
+                <p>От вас нужно: бриф (краткое описание бизнеса, ценности, портрет клиента) + 2–3 примера визуала, который вам нравится. Остальное делаю я: анализ ниши, разработка концепции, создание шаблонов.</p>
+              </div>
+              <div>
+                <div class="font-semibold text-cream mb-1">Кто делает:</div>
+                <p>Дизайнер создаёт шаблоны и гайдлайн. Я даю ТЗ, анализирую нишу, проверяю результат.</p>
+              </div>
+              <div>
+                <div class="font-semibold text-cream mb-1">Что получаете на выходе:</div>
+                <p>Брендбук в PDF с описанием стиля, шаблоны в редактируемом формате (Figma или Canva), возможность самостоятельно создавать посты в едином стиле, единый визуальный стиль на всех площадках.</p>
+              </div>
+              <div>
+                <div class="font-semibold text-cream mb-1">Сроки:</div>
+                <p>14–21 день от получения брифа.</p>
+              </div>
+              <div>
+                <div class="font-semibold text-cream mb-1">Что НЕ входит:</div>
+                <p>Разработка логотипа и полного фирменного стиля компании, вёрстка контента на месяц вперёд, ведение соцсетей.</p>
+              </div>
+              <div>
+                <div class="font-semibold text-cream mb-1">Доступность:</div>
+                <p>Разовая услуга. Можно заказать отдельно или перед заказом ведения.</p>
+              </div>
+              <div class="pt-2 border-t border-white/10">
+                <div class="font-semibold text-lime mb-1">Важное уточнение:</div>
+                <p>Это не полный фирменный стиль компании (логотип, бланки, печать). Это стиль именно для соцсетей: шаблоны постов, stories, обложек.</p>
+              </div>
+              <div>
+                <div class="font-semibold text-lime mb-1">Как это работает с ведением:</div>
+                <p>Если после заказа визуального стиля вы переходите на ведение — весь новый контент будет создаваться в этом стиле. Единый визуал на всех площадках.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Важные примечания -->
+  <div class="mt-12 bg-white/[0.04] border border-white/10 rounded-2xl p-6 lg:p-8">
+    <div class="flex items-start gap-4">
+      <div class="w-10 h-10 rounded-xl bg-lime/10 border border-lime/30 flex items-center justify-center text-lime flex-shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="flex-1">
+        <div class="text-[11px] uppercase tracking-[0.18em] text-lime font-semibold mb-3">Важные примечания</div>
+        <ul class="space-y-2 text-[13px] text-cream/70 leading-relaxed">
+          <li class="flex items-start gap-2"><span class="text-lime font-bold mt-0.5">•</span><span><strong class="text-cream">Фотосессия:</strong> студия оплачивается отдельно (2 000–5 000 ₽/час), если нужна. При съёмке на вашей локации студия не требуется.</span></li>
+          <li class="flex items-start gap-2"><span class="text-lime font-bold mt-0.5">•</span><span><strong class="text-cream">Reels:</strong> актёры, модели и реквизит оплачиваются отдельно при необходимости.</span></li>
+          <li class="flex items-start gap-2"><span class="text-lime font-bold mt-0.5">•</span><span><strong class="text-cream">Вторая соцсеть:</strong> доступна только для клиентов на ведении, так как требует готового контент-плана.</span></li>
+          <li class="flex items-start gap-2"><span class="text-lime font-bold mt-0.5">•</span><span><strong class="text-cream">Визуальный стиль:</strong> это стиль для соцсетей, не полный фирменный стиль компании с логотипом.</span></li>
+        </ul>
       </div>
     </div>
-
   </div>
 
-  <p class="text-center text-sm text-cream/50 mt-8">Цены указаны за единицу. Точная стоимость зависит от объёма и сложности.</p>
+  <!-- CTA -->
+  <div class="mt-12 text-center">
+    <a href="#contact" class="btn-lime inline-flex items-center justify-center gap-2.5 font-display font-semibold text-[16px] px-8 py-4 rounded-xl shadow-lime">
+      Обсудить дополнительную услугу
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
 </div>
-  </div>
 </section>
   <div class="container mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-24 reveal">
